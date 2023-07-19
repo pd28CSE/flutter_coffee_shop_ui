@@ -8,32 +8,30 @@ class CoffeeDetailsScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        backgroundColor: Colors.transparent,
         toolbarHeight: 45,
         title: const Text('Cappuccino'),
-        backgroundColor: Colors.black,
         actions: [
           IconButton(onPressed: () {}, icon: const Icon(Icons.search)),
         ],
       ),
+      extendBody: true,
       backgroundColor: Colors.black,
       body: Stack(
+        alignment: Alignment.topCenter,
         children: [
-          Container(
-            color: Colors.black,
-            padding: const EdgeInsets.only(left: 70),
-            child: ClipRRect(
-              borderRadius: BorderRadius.circular(120),
-              child: Image.asset(
-                'images/coffee.jpg',
-                height: 240,
-                width: 240,
-                fit: BoxFit.cover,
-              ),
+          ClipRRect(
+            borderRadius: BorderRadius.circular(120),
+            child: Image.asset(
+              'images/coffee.jpg',
+              height: 240,
+              width: 240,
+              fit: BoxFit.cover,
             ),
           ),
           Container(
             alignment: Alignment.center,
-            margin: const EdgeInsets.only(top: 180),
+            margin: const EdgeInsets.only(top: 200),
             decoration: const BoxDecoration(
               color: Colors.white,
               borderRadius: BorderRadius.only(
@@ -42,7 +40,7 @@ class CoffeeDetailsScreen extends StatelessWidget {
               ),
             ),
             child: Column(
-              children: [
+              children: <Widget>[
                 const Padding(
                   padding: EdgeInsets.only(top: 50, bottom: 5),
                   child: Text(
@@ -66,22 +64,22 @@ class CoffeeDetailsScreen extends StatelessWidget {
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     Checkbox(
-                      value: false,
+                      value: true,
                       onChanged: (value) {},
                       activeColor: Colors.green,
                     ),
                     Checkbox(
-                      value: false,
+                      value: true,
                       onChanged: (value) {},
                       activeColor: Colors.green,
                     ),
                     Checkbox(
-                      value: false,
+                      value: true,
                       onChanged: (value) {},
                       activeColor: Colors.green,
                     ),
                     Checkbox(
-                      value: false,
+                      value: true,
                       onChanged: (value) {},
                       activeColor: Colors.green,
                     ),
@@ -109,7 +107,7 @@ class CoffeeDetailsScreen extends StatelessWidget {
                   ),
                 ),
                 SizedBox(
-                  width: 150,
+                  width: 190,
                   child: Card(
                     elevation: 8,
                     shape: RoundedRectangleBorder(
@@ -120,9 +118,17 @@ class CoffeeDetailsScreen extends StatelessWidget {
                       ),
                     ),
                     child: Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceAround,
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: <Widget>[
                         TextButton(
+                          style: TextButton.styleFrom(
+                            shape: const RoundedRectangleBorder(
+                              borderRadius: BorderRadius.only(
+                                topLeft: Radius.circular(25),
+                                bottomLeft: Radius.circular(25),
+                              ),
+                            ),
+                          ),
                           onPressed: () {},
                           child: Text(
                             '-',
@@ -133,13 +139,21 @@ class CoffeeDetailsScreen extends StatelessWidget {
                           ),
                         ),
                         Text(
-                          '2',
+                          '1',
                           style: TextStyle(
                             color: Colors.yellow[900],
                             fontSize: 20,
                           ),
                         ),
                         TextButton(
+                          style: TextButton.styleFrom(
+                            shape: const RoundedRectangleBorder(
+                              borderRadius: BorderRadius.only(
+                                topRight: Radius.circular(25),
+                                bottomRight: Radius.circular(25),
+                              ),
+                            ),
+                          ),
                           onPressed: () {},
                           child: Text(
                             '+',
@@ -172,8 +186,8 @@ class CoffeeDetailsScreen extends StatelessWidget {
             ),
           ),
           Positioned(
-            top: 160,
-            left: 300,
+            top: 170,
+            left: 270,
             child: Container(
               height: 40,
               width: 40,

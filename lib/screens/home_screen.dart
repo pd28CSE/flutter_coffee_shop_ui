@@ -8,77 +8,79 @@ class HomeScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final Size size = MediaQuery.sizeOf(context);
     return Scaffold(
       body: Stack(
+        alignment: Alignment.center,
         children: [
           Image.asset(
             'images/cover.jpg',
             fit: BoxFit.cover,
-            height: double.infinity,
+            height: size.height,
+            width: size.width,
           ),
-          Center(
-            child: Column(
-              children: <Widget>[
-                Padding(
-                  padding: const EdgeInsets.only(
-                    top: 80,
-                    bottom: 20,
+          Column(
+            children: <Widget>[
+              Padding(
+                padding: const EdgeInsets.only(
+                  top: 80,
+                  bottom: 20,
+                ),
+                child: Text(
+                  'IT\'S GREAT DAY FOR',
+                  style: TextStyle(
+                    fontSize: 30,
+                    fontWeight: FontWeight.bold,
+                    color: Colors.yellow[900],
                   ),
-                  child: Text(
-                    'IT\'S GREAT DAY FOR',
+                ),
+              ),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: <Widget>[
+                  const Text(
+                    'Coffee',
                     style: TextStyle(
                       fontSize: 30,
                       fontWeight: FontWeight.bold,
-                      color: Colors.yellow[900],
+                      color: Colors.white,
                     ),
                   ),
-                ),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: <Widget>[
-                    const Text(
-                      'Coffee',
-                      style: TextStyle(
-                        fontSize: 30,
+                  Icon(
+                    Icons.coffee_outlined,
+                    color: Colors.yellow[800],
+                    size: 30,
+                  )
+                ],
+              ),
+              const Spacer(),
+              Padding(
+                padding: const EdgeInsets.only(bottom: 20),
+                child: SizedBox(
+                  height: 50,
+                  width: 200,
+                  child: ElevatedButton(
+                    style: ElevatedButton.styleFrom(
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(20),
+                      ),
+                      // maximumSize: Size.fromWidth(100),
+                      foregroundColor: Colors.black,
+                      backgroundColor: Colors.yellow[900],
+                      textStyle: const TextStyle(
+                        fontSize: 25,
                         fontWeight: FontWeight.bold,
-                        color: Colors.white,
                       ),
                     ),
-                    Icon(
-                      Icons.coffee_outlined,
-                      color: Colors.yellow[800],
-                      size: 30,
-                    )
-                  ],
-                ),
-              ],
-            ),
-          ),
-          Positioned(
-            bottom: 50,
-            left: MediaQuery.of(context).size.width / 4,
-            child: SizedBox(
-              height: 50,
-              width: 200,
-              child: ElevatedButton(
-                style: ElevatedButton.styleFrom(
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(20),
-                  ),
-                  foregroundColor: Colors.black,
-                  backgroundColor: Colors.yellow[900],
-                  textStyle: const TextStyle(
-                    fontSize: 25,
-                    fontWeight: FontWeight.bold,
+                    onPressed: () {
+                      Navigator.of(context)
+                          .pushNamed(CoffeeDetailsScreen.routeName);
+                    },
+                    child: const Text('Start'),
                   ),
                 ),
-                onPressed: () {
-                  Navigator.of(context)
-                      .pushNamed(CoffeeDetailsScreen.routeName);
-                },
-                child: const Text('Start'),
               ),
-            ),
+            ],
           ),
         ],
       ),
